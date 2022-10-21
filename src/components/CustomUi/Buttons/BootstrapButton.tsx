@@ -6,33 +6,24 @@ import { purple } from "@mui/material/colors";
 
 export const BootstrapButton = styled(Button)<ButtonProps>(({ theme }) => ({
   boxShadow: "none",
+  color: "white",
   textTransform: "none",
-  fontSize: theme.fontSize.xs,
-  padding: "6px 12px",
+  fontWeight: theme.fontWeight,
+  padding: "13px 40px",
   margin: "2px 0px",
-  borderRadius: "10px",
+  borderRadius: "25px",
   lineHeight: 1.5,
-  backgroundColor: theme.button.background1,
-  fontFamily: [
-    "-apple-system",
-    "BlinkMacSystemFont",
-    '"Segoe UI"',
-    "Roboto",
-    '"Helvetica Neue"',
-    "Arial",
-    "sans-serif",
-    '"Apple Color Emoji"',
-    '"Segoe UI Emoji"',
-    '"Segoe UI Symbol"',
-  ].join(","),
+  backgroundColor: theme.selectedColor,
+  fontFamily: theme.fontFamily.font1,
+
   "&:hover": {
-    backgroundColor: theme.button.background1,
+    backgroundColor: "white",
+    color: "black",
     boxShadow: "none",
   },
   "&:active": {
     boxShadow: "none",
     outline: "none",
-    backgroundColor: theme.button.background1,
   },
   "&:focus": {},
 }));

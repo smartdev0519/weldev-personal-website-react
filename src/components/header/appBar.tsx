@@ -19,55 +19,51 @@ import { green } from "@mui/material/colors";
 const StyledLink = styled(Link)<LinkProps>(({ theme }) => ({
   color: theme.palette.common.white,
   textDecoration: "none",
+  fontFamily: theme.fontFamily.font1,
+  fontWeight: 600,
   "&:hover": {
     color: theme.selectedColor,
   },
 }));
 
-const CustomAppBar = (props: AppBarProps) => {
+const CustomAppBar = () => {
   const theme = useTheme();
   const path = "/" + useLocation().pathname.split("/")[1];
   console.log("path", path);
   return (
-    <AppBar {...props}>
-      <Container maxWidth="xl" disableGutters sx={{ padding: "0 3%", mt: 3 }}>
-        <Toolbar disableGutters>
-          <Box
-            sx={{
-              width: "100%",
-              display: "flex",
-              justifyContent: "space-between",
-              padding: { xs: "0", md: "0 15%" },
-              alignItems: "center",
-            }}
-          >
-            <Box>
-              <img src={Logo} width="100px" height="31px" />
-            </Box>
-            <Box>
-              <Box sx={{ display: { xs: "none", md: "flex" } }}>
-                {PAGES.map((page, index) => (
-                  <Box key={index} sx={{ mr: 5 }}>
-                    <StyledLink
-                      key={index}
-                      to={page.path}
-                      style={{
-                        color:
-                          page.path == path ? theme.selectedColor : "white",
-                      }}
-                    >
-                      {page.name}
-                    </StyledLink>
-                  </Box>
-                ))}
+    <>
+      <Box
+        sx={{
+          width: "100%",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
+        <Box>
+          <img src={Logo} width="100px" height="31px" />
+        </Box>
+        <Box>
+          <Box sx={{ display: { xs: "none", md: "flex" } }}>
+            {PAGES.map((page, index) => (
+              <Box key={index} sx={{ mr: 5, "&:last-child": { mr: 0 } }}>
+                <StyledLink
+                  key={index}
+                  to={page.path}
+                  style={{
+                    color: page.path == path ? theme.selectedColor : "white",
+                  }}
+                >
+                  {page.name}
+                </StyledLink>
               </Box>
-              <Box sx={{ display: { xs: "block", md: "none" } }}>sss</Box>
-            </Box>
+            ))}
           </Box>
-          <Box></Box>
-        </Toolbar>
-      </Container>
-    </AppBar>
+          <Box sx={{ display: { xs: "block", md: "none" } }}>sss</Box>
+        </Box>
+      </Box>
+      <Box></Box>
+    </>
   );
 };
 

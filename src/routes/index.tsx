@@ -6,6 +6,7 @@ import About from "../views/about";
 import Skills from "../views/skills";
 import Contract from "../views/contract";
 import Portfolio from "../views/portfolio";
+import Login from "../views/login";
 
 const RouterProvider = () => {
   return (
@@ -18,6 +19,7 @@ const RouterProvider = () => {
           <Route path="/skills" element={<Skills />} />
           <Route path="/contract" element={<Contract />} />
         </Route>
+        <Route path="/login" element={<Login />} />
       </Routes>
     </BrowserRouter>
   );

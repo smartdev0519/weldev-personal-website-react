@@ -2,6 +2,8 @@ import { styled } from "@mui/material/styles";
 import { Link } from "react-router-dom";
 
 export const StyledLink = styled(Link)(({ theme }) => ({
+  fontFamily: `${theme.fontFamily.font1} !important`,
+  fontWeight: `${theme.fontWeight} !important`,
   height: "auto",
   background: theme.selectedColor,
   color: "white",
@@ -9,6 +11,9 @@ export const StyledLink = styled(Link)(({ theme }) => ({
   textDecoration: "none",
   borderRadius: "50px",
   textAlign: "center",
-  fontFamily: "Poppins",
   transition: "all .3s ease",
+  "&:hover": {
+    color: "black",
+    background: "white",
+  },
 }));

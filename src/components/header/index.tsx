@@ -3,7 +3,15 @@ import CssBaseline from "@mui/material/CssBaseline";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
 import Slide from "@mui/material/Slide";
 import CustomAppBar from "./appBar";
-import { AppBar, AppBarProps, Toolbar, Typography } from "@mui/material";
+import {
+  AppBar,
+  AppBarProps,
+  Toolbar,
+  Typography,
+  Box,
+  Container,
+  Theme,
+} from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 
 interface Props {
@@ -27,37 +35,46 @@ function HideOnScroll(props: Props) {
 
   return (
     <Slide
-      appear={true}
       direction="down"
       in={trigger}
       timeout={{
-        enter: theme.transitions.duration.enteringScreen,
-        exit: theme.transitions.duration.leavingScreen,
+        enter: theme.transitions.duration.standard,
+        exit: theme.transitions.duration.standard,
       }}
+      easing={theme.transitions.easing.easeOut}
     >
       {children}
     </Slide>
   );
 }
 
+const AppbarContent = (
+  <Container
+    maxWidth="lg"
+    sx={{ mt: 3, px: { xs: "3%", md: "100px" } }}
+    disableGutters
+  >
+    <Toolbar disableGutters>
+      <CustomAppBar />
+    </Toolbar>
+  </Container>
+);
+
 export default function Header() {
   const theme = useTheme();
   return (
     <React.Fragment>
       <CssBaseline />
-      <CustomAppBar
+      <AppBar
         position="static"
-        sx={{
-          background: theme.palette.common.black,
-        }}
-      />
+        sx={{ background: (theme: Theme) => theme.palette.common.black }}
+      >
+        {AppbarContent}
+      </AppBar>
+
       <HideOnScroll>
-        <AppBar>
-          <Toolbar>
-            <Typography variant="h6" component="div">
-              Scroll to hide App bar
-            </Typography>
-          </Toolbar>
+        <AppBar position="fixed" sx={{ background: "#000000db" }}>
+          {AppbarContent}
         </AppBar>
       </HideOnScroll>
     </React.Fragment>

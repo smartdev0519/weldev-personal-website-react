@@ -16,6 +16,14 @@ declare module "@mui/material/styles" {
       xl5: string;
       xl6: string;
     };
+    fontWeight: number;
+    fontFamily: {
+      font1: string;
+      font2: string;
+    };
+    fontColor: {
+      primary: string;
+    };
     button: {
       background1: string;
       background2: string;
@@ -23,6 +31,17 @@ declare module "@mui/material/styles" {
     page: {
       gutter: string;
     };
+    background: {
+      primary: {
+        light: string;
+        dark: string;
+      };
+      secondary: {
+        light: string;
+        dark: string;
+      };
+    };
+
     selectedColor: string;
     cursor: number;
   }
@@ -40,6 +59,14 @@ declare module "@mui/material/styles" {
       xl5?: string;
       xl6?: string;
     };
+    fontWeight?: number;
+    fontFamily?: {
+      font1?: string;
+      font2?: string;
+    };
+    fontColor?: {
+      primary?: string;
+    };
     button?: {
       background1?: string;
       background2?: string;
@@ -47,13 +74,23 @@ declare module "@mui/material/styles" {
     page?: {
       gutter?: string;
     };
+    background?: {
+      primary?: {
+        light?: string;
+        dark?: string;
+      };
+      secondary?: {
+        light?: string;
+        dark?: string;
+      };
+    };
     selectedColor?: string;
     cursor?: number;
   }
 }
 
 const themeContextValue = {
-  selectedColor: "#ff0000",
+  selectedColor: "#66b95c",
   cursor: 1,
 };
 
@@ -99,6 +136,13 @@ const ThemeContextProvider = (props: Props) => {
           xl5: "3.75rem",
           xl6: "4.5rem",
         },
+        fontWeight: 600,
+        fontFamily: {
+          font1: "IBM Plex Sans, sans-serif",
+        },
+        fontColor: {
+          primary: "#a2a2a2",
+        },
         button: {
           background1: "#5A32E1",
           background2: "#27CC8B",
@@ -108,6 +152,16 @@ const ThemeContextProvider = (props: Props) => {
         },
         page: {
           gutter: "5%",
+        },
+        transitions: {
+          duration: {
+            enteringScreen: 1000,
+          },
+        },
+        background: {
+          primary: {
+            dark: "#222",
+          },
         },
         selectedColor: selectedColor,
         cursor: cursor,
